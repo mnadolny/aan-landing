@@ -1,0 +1,399 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lede — Claim your free month · California AAN 2026</title>
+<meta name="description" content="A free month of Lede for 2026 California AAN attendees. The platform to grow on — publishing, reader revenue, newsletters, ads, and analytics, all in one place.">
+
+<!-- ============================================================
+     BRAND ASSETS — now wired to real files (see /assets)
+       • assets/lede-logo.svg   → hero wordmark (footer logo is inlined + recolored)
+       • assets/hero-glow.png   → coral gradient corner, top-right
+       • assets/gift.png        → offer-card gift (ships with its own circle)
+       • assets/mountains-bg.png→ Palm Springs dusk photo, full-bleed footer
+     FONTS: Fraunces (display) + Figtree (body) via Google Fonts.
+     ============================================================ -->
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400..900&family=Figtree:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+
+<style>
+  :root{
+    /* palette pulled from the redesign */
+    --cream:      #FCF6EC;   /* page top */
+    --cream-warm: #FDF3DD;
+    --yellow:     #FDEDBA;   /* page bottom — sampled from the mountains photo's sky so they blend seamlessly */
+    --card:       #FCF8F1;   /* feature + form cards */
+    --peach-ic:   #F7E6DD;   /* icon-box fill */
+    --peach-soft: #F8DBC0;   /* footer accents */
+    --coral:      #DD7E63;   /* the "." + submit button */
+    --coral-2:    #D9786D;   /* "free." / bold sub / section dots */
+    --coral-deep: #C9694F;
+    --purple:     #3D2B5E;   /* offer card gradient dark */
+    --purple-2:   #4E3A77;   /* offer card gradient light */
+    --navy:       #271F3D;   /* footer bar */
+    --ink:        #17140F;
+    --ink-soft:   #5C564B;
+    --ink-faint:  #8C8475;
+
+    --font-display: 'Fraunces', Georgia, 'Times New Roman', serif;
+    --font-body:    'Figtree', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+
+    --maxw: 560px;
+    --pad: 24px;
+    --radius: 22px;
+  }
+
+  *,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+
+  html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+
+  body{
+    font-family:var(--font-body);
+    color:var(--ink);
+    line-height:1.55;
+    /* ---- background gradient: one continuous ramp down the WHOLE page,
+            lightest cream at the very top → warm dusk yellow at the very
+            bottom (sampled from the mountains sky so they merge). No flat
+            hold — every scroll position is a slightly warmer step. ---- */
+    min-height:100vh;
+    background:linear-gradient(180deg,
+      #FCF6EC 0%,
+      #FCF1D8 38%,
+      #FDEECA 72%,
+      var(--yellow) 100%);
+    background-repeat:no-repeat;
+    -webkit-font-smoothing:antialiased;
+    text-rendering:optimizeLegibility;
+    overflow-x:hidden;
+  }
+
+  .wrap{ width:100%; max-width:var(--maxw); margin:0 auto; padding:0 var(--pad); }
+
+  h1,h2,h3{ font-family:var(--font-display); font-weight:600; letter-spacing:-.02em;
+            font-variation-settings:"SOFT" 0,"WONK" 1; }
+
+  /* ---------- coral accents ---------- */
+  .dot{ color:var(--coral); }
+  .accent{ color:var(--coral-2); }
+
+  /* ============ HERO ============ */
+  /* NOTE: no overflow:hidden here — the glow is anchored to the top-right
+     corner so it doesn't need clipping, and clipping would slice the CTA's
+     drop shadow. Horizontal bleed is already caught by body{overflow-x:hidden}. */
+  .hero{ position:relative; padding:44px 0 20px; }
+  .hero .wrap{ position:relative; z-index:1; display:flex; flex-direction:column; align-items:center; text-align:center; }
+
+  /* coral gradient corner, bleeding off the top-right */
+  .glow{
+    position:absolute; top:0; right:0; z-index:0; pointer-events:none;
+    width:min(58%, 440px); height:auto;
+    -webkit-user-select:none; user-select:none;
+  }
+
+  .logo{ height:50px; width:auto; margin-bottom:52px; }
+
+  h1.headline{
+    font-size:clamp(46px, 13.5vw, 78px); line-height:.98;
+    letter-spacing:-.028em; color:var(--ink); margin-bottom:20px;
+  }
+
+  .subhead{ font-size:clamp(17px,4.6vw,20px); color:var(--ink-soft); max-width:22ch; margin-bottom:28px; }
+  .subhead .accent{ font-weight:800; }
+
+  /* ---------- buttons ---------- */
+  .btn{
+    display:inline-flex; align-items:center; justify-content:center; gap:10px;
+    font-family:var(--font-body); font-weight:600; font-size:17px;
+    padding:17px 26px; border-radius:999px; border:0; cursor:pointer;
+    text-decoration:none; transition:transform .15s ease, box-shadow .2s ease, background .2s ease;
+    width:100%;
+  }
+  .btn-arrow{ font-size:18px; transition:transform .15s ease; }
+  .btn-dark{ background:var(--ink); color:var(--cream); box-shadow:0 18px 40px -20px rgba(23,20,15,.5); }
+  .btn-dark:hover{ transform:translateY(-2px); box-shadow:0 26px 52px -22px rgba(23,20,15,.55); }
+  .btn-dark:hover .btn-arrow{ transform:translateX(3px); }
+  .btn-coral{ background:var(--coral); color:#fff; box-shadow:0 18px 40px -20px rgba(221,126,99,.75); }
+  .btn-coral:hover{ background:var(--coral-deep); transform:translateY(-2px); box-shadow:0 26px 52px -22px rgba(221,126,99,.8); }
+  .btn-coral:hover .btn-arrow{ transform:translateX(3px); }
+  .btn-coral:disabled{ opacity:.6; cursor:default; transform:none; }
+
+  /* ---------- shared card ---------- */
+  .card{
+    background:var(--card);
+    border:1px solid rgba(23,20,15,.06);
+    border-radius:var(--radius);
+    box-shadow:0 18px 44px -28px rgba(61,43,94,.4);
+  }
+
+  /* ============ FEATURES ============ */
+  .features{ position:relative; z-index:1; padding:56px 0 0; }
+  .feature-card{ padding:36px 24px; }
+
+  .sec-head{ text-align:center; margin-bottom:8px; }
+  .sec-title{ font-size:clamp(28px,6.4vw,36px); line-height:1.04; letter-spacing:-.015em; color:var(--ink); }
+  .sec-sub{ color:var(--ink-soft); font-size:16px; line-height:1.5; margin-top:8px; }
+
+  .feat-list{ list-style:none; margin-top:20px; }
+  .feat{ display:flex; gap:16px; padding:18px 4px; border-top:1px solid rgba(23,20,15,.1); }
+  .feat-ic{ flex:0 0 auto; width:40px; height:40px; border-radius:11px; background:var(--peach-ic);
+            display:grid; place-items:center; color:var(--coral-deep); }
+  .feat-ic svg{ width:21px; height:21px; }
+  .feat-txt h3{ font-size:16.5px; font-weight:700; font-family:var(--font-body); letter-spacing:-.01em; margin-bottom:3px; color:var(--ink); }
+  .feat-txt p{ font-size:14.5px; color:var(--ink-soft); line-height:1.45; }
+
+  /* ---------- OFFER CARD (purple) ---------- */
+  .offer{ margin-top:24px; }
+  .offer-card{
+    position:relative; overflow:hidden;
+    background:linear-gradient(180deg, var(--purple-2) 0%, var(--purple) 100%);
+    border-radius:var(--radius); padding:32px 30px; color:#fff;
+    display:flex; gap:22px; align-items:center;
+  }
+  .offer-card .gift{ flex:0 0 auto; width:100px; height:100px; }
+  .offer-rule{ flex:0 0 auto; width:1px; align-self:stretch; min-height:110px; background:rgba(255,255,255,.28); }
+  .offer-body h2{ font-size:25px; line-height:1.08; margin-bottom:6px; color:#fff; }
+  .offer-body h2 .free{ color:var(--coral-2); }
+  .offer-body p{ font-size:15px; color:rgba(255,255,255,.82); line-height:1.45; }
+
+  /* ============ SIGNUP FORM ============ */
+  .signup{ position:relative; z-index:1; padding:40px 0 64px; }
+  .form-card{ padding:36px 24px; }
+  .form-card .sec-head{ text-align:left; }
+  .form-card .sec-sub{ max-width:40ch; }
+
+  .field{ margin-top:16px; }
+  .field label{ display:block; font-size:13.5px; font-weight:600; color:var(--ink); margin-bottom:7px; }
+  .field input{
+    width:100%; font-family:var(--font-body); font-size:16px; color:var(--ink);
+    padding:15px 16px; border:1.5px solid rgba(23,20,15,.16); border-radius:13px;
+    background:#fff; transition:border-color .15s ease, box-shadow .15s ease;
+  }
+  .field input::placeholder{ color:var(--ink-faint); }
+  .field input:focus{ outline:none; border-color:var(--coral); box-shadow:0 0 0 4px rgba(221,126,99,.18); }
+  .field input:user-invalid{ border-color:var(--coral-deep); }
+
+  /* honeypot — hidden from humans, catches bots */
+  .hp{ position:absolute; left:-9999px; width:1px; height:1px; overflow:hidden; }
+
+  .form-card .btn-coral{ margin-top:22px; }
+  .finehint{ font-size:12.5px; color:var(--ink-faint); text-align:center; margin-top:14px; line-height:1.4; }
+  .finehint a{ color:var(--coral-deep); }
+
+  /* success state */
+  .success{ display:none; text-align:center; padding:14px 4px 6px; }
+  .success.show{ display:block; animation:pop .4s ease; }
+  .success .badge{ width:64px; height:64px; border-radius:50%; background:var(--peach-ic); display:grid; place-items:center; margin:0 auto 18px; color:var(--coral-deep); }
+  .success .badge svg{ width:30px; height:30px; }
+  .success h2{ font-size:28px; margin-bottom:10px; color:var(--ink); }
+  .success p{ color:var(--ink-soft); font-size:15.5px; max-width:32ch; margin:0 auto; }
+  .success p a{ color:var(--coral-deep); font-weight:600; }
+  @keyframes pop{ from{ opacity:0; transform:translateY(10px); } to{ opacity:1; transform:none; } }
+
+  /* ============ FOOTER (mountains + bar) ============ */
+  footer{ position:relative; margin-top:8px; }
+  .scape{ display:block; width:100%; height:auto; margin-bottom:-2px; }
+  .footbar{ background:var(--navy); padding:26px var(--pad) 30px; }
+  .footbar .wrap{ display:flex; align-items:center; justify-content:center; gap:14px; flex-wrap:wrap; max-width:var(--maxw); }
+  .footlogo{ height:22px; width:auto; color:var(--peach-soft); }
+  .footbar .divider{ width:1px; height:20px; background:rgba(255,255,255,.3); }
+  .footbar a{ color:var(--peach-soft); font-weight:500; font-size:14.5px; text-decoration:none; }
+  .footbar a:hover{ color:#fff; }
+
+  /* ---------- desktop polish ---------- */
+  @media (min-width:680px){
+    :root{ --maxw:644px; --pad:0px; }
+    .hero{ padding:52px 0 8px; }
+    .feature-card{ padding:40px 38px; }
+    .form-card{ padding:40px 38px; }
+    .glow{ width:min(48%,460px); }
+  }
+
+  /* load-in motion */
+  .rise{ opacity:0; transform:translateY(16px); }
+  .rise.in{ opacity:1; transform:none; transition:opacity .6s ease, transform .6s ease; }
+  @media (prefers-reduced-motion:reduce){
+    html{ scroll-behavior:auto; }
+    .rise{ opacity:1; transform:none; transition:none; }
+    .success.show{ animation:none; }
+  }
+</style>
+</head>
+<body>
+
+  <!-- ============ HERO ============ -->
+  <header class="hero">
+    <img class="glow" src="assets/hero-glow.png" alt="" aria-hidden="true">
+    <div class="wrap">
+      <img class="logo rise" src="assets/lede-logo.svg" alt="Lede" width="131" height="50">
+      <h1 class="headline rise">The platform<br>to grow on<span class="dot">.</span></h1>
+      <p class="subhead rise">Publishing, reader revenue tools, newsletters, ads, and analytics <span class="accent">all in one place.</span></p>
+      <a href="#claim" class="btn btn-dark rise">Claim your free month <span class="btn-arrow" aria-hidden="true">→</span></a>
+    </div>
+  </header>
+
+  <!-- ============ FEATURES ============ -->
+  <section class="features">
+    <div class="wrap">
+      <div class="card feature-card rise">
+        <div class="sec-head">
+          <h2 class="sec-title">Everything to run and grow your publication<span class="accent">.</span></h2>
+          <p class="sec-sub">One platform, built for independent media.<br>No patchwork of tools.</p>
+        </div>
+
+        <ul class="feat-list">
+          <li class="feat">
+            <span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h11l5 5v11H4z"/><path d="M15 4v5h5"/><path d="M8 13h8M8 17h6"/></svg></span>
+            <div class="feat-txt"><h3>Publishing</h3><p>Launch and run a fast, white-labeled site that's yours — your brand, your rules.</p></div>
+          </li>
+          <li class="feat">
+            <span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="8.5"/><path d="M12 7v10M9.5 9.2c0-1.2 1.1-1.9 2.5-1.9s2.5.7 2.5 1.9c0 2.6-5 1.4-5 4 0 1.2 1.1 1.9 2.5 1.9s2.5-.7 2.5-1.9"/></svg></span>
+            <div class="feat-txt"><h3>Reader revenue</h3><p>An integrated paywall and Stripe-powered subscriptions you control — pricing, tiers, and messaging.</p></div>
+          </li>
+          <li class="feat">
+            <span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg></span>
+            <div class="feat-txt"><h3>Newsletters</h3><p>Reach your audience in the inbox and turn casual readers into paying subscribers.</p></div>
+          </li>
+          <li class="feat">
+            <span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M3 11v2a1 1 0 0 0 1 1h2l9 5V5L6 10H4a1 1 0 0 0-1 1z"/><path d="M6 14v4a1 1 0 0 0 1 1h1"/><path d="M19 9a3 3 0 0 1 0 6"/></svg></span>
+            <div class="feat-txt"><h3>Ads</h3><p>Sell and serve ads alongside your content to diversify how you earn.</p></div>
+          </li>
+          <li class="feat">
+            <span class="feat-ic" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round"><path d="M4 20V4"/><path d="M4 20h16"/><path d="M8 16l4-5 3 3 4-6"/></svg></span>
+            <div class="feat-txt"><h3>Analytics</h3><p>Beacon, our first-party analytics, shows what actually converts — beyond pageviews, privacy-first.</p></div>
+          </li>
+        </ul>
+
+        <!-- ---- offer card ---- -->
+        <div class="offer">
+          <div class="offer-card">
+            <img class="gift" src="assets/gift.png" alt="" aria-hidden="true">
+            <div class="offer-rule" aria-hidden="true"></div>
+            <div class="offer-body">
+              <h2>Get a month of Lede for <span class="free">free.</span></h2>
+              <p>Our gift to 2026 California AAN attendees. Set up your publication on us.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ SIGNUP FORM ============ -->
+  <section class="signup" id="claim">
+    <div class="wrap">
+      <div class="card form-card rise">
+
+        <div id="formView">
+          <div class="sec-head">
+            <h2 class="sec-title">Claim your free month<span class="dot">.</span></h2>
+            <p class="sec-sub">Drop your details and we'll set up your free month of Lede.</p>
+          </div>
+
+          <!-- ============================================================
+               FORM SUBMISSION — NOT YET CONNECTED (front-end mockup)
+               To go live, do ONE of:
+                 • Set action="https://your-endpoint" method="POST" and
+                   remove the e.preventDefault() success shim in the script; OR
+                 • Keep the JS handler and POST via fetch() inside it.
+               Fields: name, email, publication (+ honeypot 'company').
+               ============================================================ -->
+          <form id="claimForm" action="#" method="POST" novalidate>
+            <div class="field">
+              <label for="name">Full name</label>
+              <input id="name" name="name" type="text" autocomplete="name" placeholder="Jane Reporter" required>
+            </div>
+            <div class="field">
+              <label for="email">Work email</label>
+              <input id="email" name="email" type="email" autocomplete="email" placeholder="jane@yourpublication.com" required>
+            </div>
+            <div class="field">
+              <label for="publication">Publication / organization</label>
+              <input id="publication" name="publication" type="text" autocomplete="organization" placeholder="The Daily Example" required>
+            </div>
+
+            <!-- honeypot: bots fill this, humans never see it -->
+            <div class="hp" aria-hidden="true"><label>Company<input name="company" type="text" tabindex="-1" autocomplete="off"></label></div>
+
+            <button type="submit" class="btn btn-coral" id="submitBtn">Claim my free month <span class="btn-arrow" aria-hidden="true">→</span></button>
+            <p class="finehint">We'll only use this to set up your free month and follow up. No spam — promise.</p>
+          </form>
+        </div>
+
+        <div class="success" id="successView" role="status" aria-live="polite">
+          <div class="badge" aria-hidden="true"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6 9 17l-5-5"/></svg></div>
+          <h2>You're all set.</h2>
+          <p>We'll reach out at <strong id="echoEmail">your email</strong> to start your free month. Come say hi at our booth, or email <a href="mailto:info@joinlede.com">info@joinlede.com</a>.</p>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- ============ FOOTER ============ -->
+  <footer>
+    <img class="scape" src="assets/mountains-bg.png" alt="Palm Springs mountains at dusk" width="1440" height="554">
+    <div class="footbar">
+      <div class="wrap">
+        <!-- footer logo: same wordmark, recolored to the warm cream via currentColor -->
+        <svg class="footlogo" viewBox="0 0 114 46" fill="currentColor" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="Lede">
+          <path d="M99.7848 45.12C96.8248 45.12 94.2648 44.46 92.1048 43.14C89.9448 41.78 88.2648 39.88 87.0648 37.44C85.9048 35 85.3248 32.12 85.3248 28.8C85.3248 25.48 85.9048 22.62 87.0648 20.22C88.2248 17.78 89.8648 15.88 91.9848 14.52C94.1048 13.16 96.6448 12.48 99.6048 12.48C102.685 12.48 105.245 13.18 107.285 14.58C109.365 15.94 110.925 17.8 111.965 20.16C113.005 22.52 113.525 25.14 113.525 28.02V30.48H92.1648V31.5C92.1648 33.9 92.8648 35.88 94.2648 37.44C95.7048 38.96 97.7448 39.72 100.385 39.72C102.305 39.72 103.925 39.3 105.245 38.46C106.565 37.62 107.665 36.48 108.545 35.04L112.445 38.82C111.245 40.7 109.545 42.22 107.345 43.38C105.185 44.54 102.665 45.12 99.7848 45.12ZM99.7248 17.58C98.2048 17.58 96.8648 17.94 95.7048 18.66C94.5848 19.34 93.7048 20.3 93.0648 21.54C92.4648 22.74 92.1648 24.14 92.1648 25.74V26.16H106.685V25.56C106.685 23.96 106.405 22.56 105.845 21.36C105.285 20.16 104.485 19.24 103.445 18.6C102.405 17.92 101.165 17.58 99.7248 17.58Z"/>
+          <path d="M76.5969 44.4V39.24H76.2969C75.5769 41.08 74.4569 42.52 72.9369 43.56C71.4169 44.6 69.6169 45.12 67.5369 45.12C64.9369 45.12 62.6969 44.48 60.8169 43.2C58.9769 41.88 57.5569 40 56.5569 37.56C55.5969 35.12 55.1169 32.2 55.1169 28.8C55.1169 25.36 55.5969 22.44 56.5569 20.04C57.5569 17.6 58.9769 15.74 60.8169 14.46C62.6969 13.14 64.9369 12.48 67.5369 12.48C69.6169 12.48 71.4369 13 72.9969 14.04C74.5569 15.04 75.6569 16.48 76.2969 18.36H76.5969V0H83.1369V44.4H76.5969ZM69.5169 39.6C70.8369 39.6 72.0169 39.38 73.0569 38.94C74.1369 38.46 74.9969 37.82 75.6369 37.02C76.2769 36.18 76.5969 35.16 76.5969 33.96V23.4C76.5969 22.32 76.2769 21.38 75.6369 20.58C74.9969 19.78 74.1369 19.16 73.0569 18.72C72.0169 18.28 70.8369 18.06 69.5169 18.06C67.2769 18.06 65.4569 18.8 64.0569 20.28C62.6969 21.76 62.0169 23.7 62.0169 26.1V31.5C62.0169 33.9 62.6969 35.86 64.0569 37.38C65.4569 38.86 67.2769 39.6 69.5169 39.6Z"/>
+          <path d="M38.9958 45.12C36.0358 45.12 33.4758 44.46 31.3158 43.14C29.1558 41.78 27.4758 39.88 26.2758 37.44C25.1158 35 24.5358 32.12 24.5358 28.8C24.5358 25.48 25.1158 22.62 26.2758 20.22C27.4358 17.78 29.0758 15.88 31.1958 14.52C33.3158 13.16 35.8558 12.48 38.8158 12.48C41.8958 12.48 44.4558 13.18 46.4958 14.58C48.5758 15.94 50.1358 17.8 51.1758 20.16C52.2158 22.52 52.7358 25.14 52.7358 28.02V30.48H31.3758V31.5C31.3758 33.9 32.0758 35.88 33.4758 37.44C34.9158 38.96 36.9558 39.72 39.5958 39.72C41.5158 39.72 43.1358 39.3 44.4558 38.46C45.7758 37.62 46.8758 36.48 47.7558 35.04L51.6558 38.82C50.4558 40.7 48.7558 42.22 46.5558 43.38C44.3958 44.54 41.8758 45.12 38.9958 45.12ZM38.9358 17.58C37.4158 17.58 36.0758 17.94 34.9158 18.66C33.7958 19.34 32.9158 20.3 32.2758 21.54C31.6758 22.74 31.3758 24.14 31.3758 25.74V26.16H45.8958V25.56C45.8958 23.96 45.6158 22.56 45.0558 21.36C44.4958 20.16 43.6958 19.24 42.6558 18.6C41.6158 17.92 40.3758 17.58 38.9358 17.58Z"/>
+          <path d="M23.82 44.4H0V2.52002H6.78V38.4H23.82V44.4Z"/>
+        </svg>
+        <span class="divider" aria-hidden="true"></span>
+        <a href="https://joinlede.com">joinlede.com</a>
+        <span class="divider" aria-hidden="true"></span>
+        <a href="mailto:info@joinlede.com">info@joinlede.com</a>
+      </div>
+    </div>
+  </footer>
+
+<script>
+  /* ---- load-in reveal ---- */
+  (function(){
+    var els = document.querySelectorAll('.rise');
+    if(!('IntersectionObserver' in window)){ els.forEach(function(e){e.classList.add('in');}); return; }
+    var io = new IntersectionObserver(function(entries){
+      entries.forEach(function(en){ if(en.isIntersecting){ en.target.classList.add('in'); io.unobserve(en.target); } });
+    }, { threshold:.12 });
+    els.forEach(function(e){ io.observe(e); });
+  })();
+
+  /* ---- form handling (front-end mockup) ---- */
+  var form = document.getElementById('claimForm');
+  form.addEventListener('submit', function(e){
+    e.preventDefault();                          // <-- remove this line when you POST to a real endpoint
+    if(!form.reportValidity()) return;           // native validation
+    if(form.company.value){ return; }            // honeypot tripped → silently drop
+
+    var data = {
+      name: form.name.value.trim(),
+      email: form.email.value.trim(),
+      publication: form.publication.value.trim()
+    };
+
+    /* TODO — CONNECT BACKEND: send `data` to your CRM / endpoint, e.g.
+       var btn = document.getElementById('submitBtn');
+       btn.disabled = true; btn.textContent = 'Sending…';
+       fetch('https://your-endpoint', {
+         method:'POST', headers:{'Content-Type':'application/json'},
+         body: JSON.stringify(data)
+       }).then(showSuccess).catch(function(){ btn.disabled=false; btn.textContent='Try again'; });
+    */
+
+    showSuccess();
+
+    function showSuccess(){
+      document.getElementById('echoEmail').textContent = data.email || 'your email';
+      document.getElementById('formView').style.display = 'none';
+      var s = document.getElementById('successView');
+      s.classList.add('show');
+      s.scrollIntoView({ behavior:'smooth', block:'center' });
+    }
+  });
+</script>
+</body>
+</html>
